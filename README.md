@@ -1,2 +1,2 @@
 # ise-component-websocket
-WebSocket Component used by Internalsystemerror Limited
+WebSocket component used by Internalsystemerror Limited
