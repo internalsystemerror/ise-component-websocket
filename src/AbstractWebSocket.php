@@ -259,13 +259,10 @@ abstract class AbstractWebSocket extends AbstractClient
      * @return string
      * @throws RuntimeException
      */
-    protected function receiveFragment($allowEmpty = false)
+    protected function receiveFragment()
     {
         // Just read the main fragment information first
-        $data = $this->read(2, $allowEmpty);
-        if (!$data) {
-            return '';
-        }
+        $data = $this->read(2);
 
         // Get variables from data
         $payload = '';
@@ -359,11 +356,10 @@ abstract class AbstractWebSocket extends AbstractClient
      * Read X amount of bytes from the socket
      *
      * @param  integer $length
-     * @param  boolean $allowEmpty
      * @return string
      * @throws RuntimeException
      */
-    protected function read($length, $allowEmpty = false)
+    protected function read($length)
     {
         $data = '';
         while (strlen($data) < $length) {
@@ -377,7 +373,7 @@ abstract class AbstractWebSocket extends AbstractClient
                     json_encode($metadata)
                 ));
             }
-            if ($buffer === '' && !$allowEmpty) {
+            if ($buffer === '') {
                 $metadata = stream_get_meta_data($this->socket);
                 throw new Exception\RuntimeException(sprintf(
                     'Emtpy read; connection dead? Stream state: %s',
