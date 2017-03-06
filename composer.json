@@ -5,7 +5,7 @@
     "homepage": "https://github.com/internalsystemerror/ise-component-websocket",
     "require": {
         "php": "^5.6 || ^7.0",
-        "ise/ise-component-client": "^1.0"
+        "ise/ise-component-client": "dev-develop"
     },
     "require-dev": {
         "ise/php-metapackage-development": "^1.0"
